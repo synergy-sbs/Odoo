@@ -37,7 +37,7 @@ class WebsiteSupportSLARuleCondition(models.Model):
     subcategory_id = fields.Many2one('website.support.ticket.subcategory', string="Sub Category")
     priority_id = fields.Many2one('website.support.ticket.priority', string="Priority")
 
-    @api.one
+    
     @api.depends('type','category_id','subcategory_id','priority_id')
     def _compute_display_value(self):
         if self.type == "category":

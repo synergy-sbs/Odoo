@@ -26,7 +26,7 @@ class WebsiteSupportSettings(models.Model):
     google_captcha_secret_key = fields.Char(string="reCAPTCHA Secret Key")
     allow_website_priority_set = fields.Selection([("partner","Partner Only"), ("everyone","Everyone")], string="Allow Website Priority Set", help="Cusomters can set the priority of a ticket when submitting via the website form\nPartner Only = logged in user")
 
-    @api.multi
+    
     def set_values(self):
         super(WebsiteSupportSettings, self).set_values()
         self.env['ir.default'].set('website.support.settings', 'auto_send_survey', self.auto_send_survey)

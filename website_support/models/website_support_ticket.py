@@ -98,7 +98,7 @@ class WebsiteSupportTicket(models.Model):
     sla_alert_ids = fields.Many2many('website.support.sla.alert', string="SLA Alerts",
                                      help="Keep record of SLA alerts sent so we do not resend them")
 
-    @api.one
+    
     @api.depends('sla_timer')
     def _compute_sla_timer_format(self):
         # Display negative hours in a positive format
@@ -162,7 +162,7 @@ class WebsiteSupportTicket(models.Model):
     def resume_sla(self):
         self.sla_active = True
 
-    @api.one
+    
     @api.depends('planned_time')
     def _compute_planned_time_format(self):
 
@@ -181,11 +181,11 @@ class WebsiteSupportTicket(models.Model):
         else:
             self.planned_time_format = self.planned_time
 
-    @api.one
+    
     def _compute_approve_url(self):
         self.approve_url = "/support/approve/" + str(self.id)
 
-    @api.one
+    
     def _compute_disapprove_url(self):
         self.disapprove_url = "/support/disapprove/" + str(self.id)
 
@@ -263,14 +263,14 @@ class WebsiteSupportTicket(models.Model):
 
         return super(WebsiteSupportTicket, self).message_update(msg_dict, update_vals=update_vals)
 
-    @api.one
+    
     @api.depends('state_id')
     def _compute_unattend(self):
 
         if self.state_id.unattended == True:
             self.unattended = True
 
-    @api.multi
+    
     def request_approval(self):
 
         approval_email = self.env['ir.model.data'].get_object('website_support', 'support_ticket_approval')
@@ -289,7 +289,7 @@ class WebsiteSupportTicket(models.Model):
             'target': 'new'
         }
 
-    @api.multi
+    
     def open_close_ticket_wizard(self):
 
         return {
@@ -371,7 +371,7 @@ class WebsiteSupportTicket(models.Model):
 
         return new_id
 
-    @api.multi
+    
     def write(self, values, context=None):
 
         update_rec = super(WebsiteSupportTicket, self).write(values)
@@ -596,7 +596,7 @@ class WebsiteSupportTicketCompose(models.Model):
             values = self.env['mail.compose.message'].generate_email_for_composer(self.template_id.id, [self.ticket_id.id])[self.ticket_id.id]
             self.body = values['body']
 
-    @api.one
+    
     def send_reply(self):
 
         #Change the approval state before we send the mail
