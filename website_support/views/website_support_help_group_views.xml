@@ -41,7 +41,6 @@
     <record id="website_support_help_group_action" model="ir.actions.act_window">
         <field name="name">Website Help Groups</field>
         <field name="res_model">website.support.help.group</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">Create a help page group</p>

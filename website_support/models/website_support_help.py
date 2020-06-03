@@ -4,7 +4,7 @@ import re
 
 from odoo import api, fields, models
 from odoo.http import request
-from odoo.tools import html_escape as escape, ustr, image_resize_and_sharpen, image_save_for_web
+from odoo.tools import html_escape as escape, ustr
 
 from odoo.addons.http_routing.models.ir_http import slug
 
@@ -14,7 +14,7 @@ class WebsiteSupportHelpGroup(models.Model):
     _order = "sequence asc"
 
     name = fields.Char(string="Name", translate=True)
-    image = fields.Binary(string="Image")
+    image = fields.Image(string="Image")
     sequence = fields.Integer(string="Sequence")
     website_published = fields.Boolean(string="Published", default="True")
     page_ids = fields.One2many('website.support.help.page','group_id',string="Pages")

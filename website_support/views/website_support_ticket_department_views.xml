@@ -45,7 +45,6 @@
     <record id="website_support_department_action" model="ir.actions.act_window">
         <field name="name">Support Ticket Departments</field>
         <field name="res_model">website.support.department</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">Create new department</p>
