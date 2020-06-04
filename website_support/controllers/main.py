@@ -366,7 +366,8 @@ class SupportTicketController(http.Controller):
             sub_category = ""
 
 
-        create_dict = {'person_name':values['person_name'], 'category_id': values['category'], 'sub_category_id': sub_category, 'email':values['email'], 'description':values['description'], 'subject':values['subject'], 'attachment': my_attachment, 'attachment_filename': file_name}
+        #create_dict = {'person_name':values['person_name'], 'category_id': values['category'], 'sub_category_id': sub_category, 'email':values['email'], 'description':values['description'], 'subject':values['subject'], 'attachment': my_attachment, 'attachment_filename': file_name}
+        create_dict = {'person_name':values['person_name'], 'category_id': values['category'], 'sub_category_id': sub_category, 'email':values['email'], 'description':values['description'], 'subject':values['subject']}
 
         if http.request.env.user.name != "Public user":
 
