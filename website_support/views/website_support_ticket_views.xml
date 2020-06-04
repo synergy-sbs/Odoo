@@ -64,11 +64,7 @@
                         </page>
                         <page string="Attachments">
                             <group>
-                                <field name="attachment_ids">
-                                    <tree>
-                                        <field name="name"/>
-                                    </tree>
-                                </field>
+                                <field name="attachment_ids" widget="many2many_binary" />
                             </group>
                         </page>
                         <page string="SLA">

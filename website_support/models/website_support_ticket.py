@@ -66,8 +66,9 @@ class WebsiteSupportTicket(models.Model):
     state_id = fields.Many2one('website.support.ticket.state', group_expand='_read_group_state', default=_default_state,
                             string="State")
     conversation_history_ids = fields.One2many('website.support.ticket.message', 'ticket_id', string="Conversation History")
-    attachment_ids = fields.One2many('ir.attachment', 'res_id', domain=[('res_model', '=', 'website.support.ticket')],
-                                     string="Media Attachments")
+    #attachment_ids = fields.One2many('ir.attachment', 'res_id', domain=[('res_model', '=', 'website.support.ticket')],
+     #                                string="Media Attachments")
+    attachment_ids = fields.Many2many('ir.attachment', string="Media Attachments")
     unattended = fields.Boolean(string="Unattended", compute="_compute_unattend", store="True",
                                 help="In 'Open' state or 'Customer Replied' state taken into consideration name changes")
     portal_access_key = fields.Char(string="Portal Access Key")
